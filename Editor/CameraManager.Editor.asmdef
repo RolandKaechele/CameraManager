@@ -1,0 +1,9 @@
+{
+  "name": "CameraManager.Editor",
+  "rootNamespace": "CameraManager.Editor",
+  "references": ["CameraManager.Runtime"],
+  "includePlatforms": ["Editor"],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "autoReferenced": true
+}
