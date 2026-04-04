@@ -16,6 +16,7 @@ Supports JSON-driven profiles for modding and full optional integration with Cut
 - **MapLoaderFramework integration** — reset camera to default on chapter change (activated via `CAMERAMANAGER_MLF`)
 - **EventManager integration** — broadcast `camera.changed/pushed/popped` events (activated via `CAMERAMANAGER_EM` or `EVENTMANAGER_CAM`)
 - **Custom Inspector** — live camera controls, active profile display, and registered profile list in Play Mode
+- **Odin Inspector integration** — `SerializedMonoBehaviour` base for full Inspector serialization of complex types; runtime-display fields marked `[ReadOnly]` in Play Mode (activated via `ODIN_INSPECTOR`)
 
 
 ## Installation
@@ -142,3 +143,4 @@ JSON entries are **merged by id** — mods can add new profiles or override Insp
 | `CAMERAMANAGER_MLF` | CameraManager ←→ MapLoaderFramework |
 | `CAMERAMANAGER_EM` | CameraManager → EventManager (fire events) |
 | `EVENTMANAGER_CAM` | EventManager ← CameraManager (re-broadcast) |
+| `ODIN_INSPECTOR` | CameraManager ↔→ Odin Inspector (`SerializedMonoBehaviour` + `[ReadOnly]`) |

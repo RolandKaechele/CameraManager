@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace CameraManager.Runtime
 {
@@ -13,7 +16,11 @@ namespace CameraManager.Runtime
     /// </summary>
     [AddComponentMenu("Managers/Camera Manager")]
     [DisallowMultipleComponent]
+#if ODIN_INSPECTOR
+    public class CameraManager : SerializedMonoBehaviour
+#else
     public class CameraManager : MonoBehaviour
+#endif
     {
         // ──────────────────────────────────────────────────────────
         // Inspector fields
