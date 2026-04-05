@@ -16,6 +16,7 @@ Supports JSON-driven profiles for modding and full optional integration with Cut
 - **MapLoaderFramework integration** — reset camera to default on chapter change (activated via `CAMERAMANAGER_MLF`)
 - **EventManager integration** — broadcast `camera.changed/pushed/popped` events (activated via `CAMERAMANAGER_EM` or `EVENTMANAGER_CAM`)
 - **Custom Inspector** — live camera controls, active profile display, and registered profile list in Play Mode
+- **DOTween Pro integration** — `DOTween.To` smoothly tweens `fieldOfView` and `orthographicSize` between profiles; DOTween Pro Visual Path editor can drive cinematic camera paths (activated via `CAMERAMANAGER_DOTWEEN`)
 - **Odin Inspector integration** — `SerializedMonoBehaviour` base for full Inspector serialization of complex types; runtime-display fields marked `[ReadOnly]` in Play Mode (activated via `ODIN_INSPECTOR`)
 
 
