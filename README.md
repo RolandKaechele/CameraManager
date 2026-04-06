@@ -144,4 +144,5 @@ JSON entries are **merged by id** — mods can add new profiles or override Insp
 | `CAMERAMANAGER_MLF` | CameraManager ←→ MapLoaderFramework |
 | `CAMERAMANAGER_EM` | CameraManager → EventManager (fire events) |
 | `EVENTMANAGER_CAM` | EventManager ← CameraManager (re-broadcast) |
+| `PHYSICSMANAGER_CAM` | PhysicsManager → CameraManager (`Shake()` on significant impacts) |
 | `ODIN_INSPECTOR` | CameraManager ↔→ Odin Inspector (`SerializedMonoBehaviour` + `[ReadOnly]`) |

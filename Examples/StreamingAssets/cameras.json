@@ -1,0 +1,44 @@
+{
+  "cameras": [
+    {
+      "id": "gameplay_default",
+      "displayName": "Gameplay",
+      "cameraTag": "MainCamera",
+      "fov": 60.0,
+      "orthographic": false,
+      "orthographicSize": 5.0,
+      "priority": 10,
+      "category": "gameplay"
+    },
+    {
+      "id": "cutscene",
+      "displayName": "Cutscene",
+      "cameraTag": "MainCamera",
+      "fov": 45.0,
+      "orthographic": false,
+      "orthographicSize": 5.0,
+      "priority": 20,
+      "category": "cutscene"
+    },
+    {
+      "id": "boss_fight",
+      "displayName": "Boss Fight",
+      "cameraTag": "MainCamera",
+      "fov": 70.0,
+      "orthographic": false,
+      "orthographicSize": 5.0,
+      "priority": 15,
+      "category": "gameplay"
+    },
+    {
+      "id": "overhead_2d",
+      "displayName": "Overhead 2D",
+      "cameraTag": "MainCamera",
+      "fov": 60.0,
+      "orthographic": true,
+      "orthographicSize": 6.0,
+      "priority": 10,
+      "category": "gameplay"
+    }
+  ]
+}

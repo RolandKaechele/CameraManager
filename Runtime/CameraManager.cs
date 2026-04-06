@@ -140,6 +140,36 @@ namespace CameraManager.Runtime
         /// <summary>Returns true if a profile with the given id exists.</summary>
         public bool HasCamera(string id) => !string.IsNullOrEmpty(id) && _map.ContainsKey(id);
 
+        /// <summary>
+        /// Triggers a camera shake by starting a coroutine that briefly offsets the active camera.
+        /// </summary>
+        /// <param name="strength">Maximum positional offset in world units.</param>
+        /// <param name="duration">Total shake duration in seconds.</param>
+        public void Shake(float strength, float duration)
+        {
+            StartCoroutine(ShakeCoroutine(strength, duration));
+        }
+
+        private System.Collections.IEnumerator ShakeCoroutine(float strength, float duration)
+        {
+            GameObject camGo = CurrentProfile != null && !string.IsNullOrEmpty(CurrentProfile.cameraTag)
+                ? GameObject.FindGameObjectWithTag(CurrentProfile.cameraTag)
+                : Camera.main?.gameObject;
+
+            if (camGo == null) yield break;
+
+            Vector3 origin = camGo.transform.localPosition;
+            float elapsed  = 0f;
+            while (elapsed < duration)
+            {
+                float t = 1f - (elapsed / duration);
+                camGo.transform.localPosition = origin + (Vector3)UnityEngine.Random.insideUnitCircle * strength * t;
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            camGo.transform.localPosition = origin;
+        }
+
         // ──────────────────────────────────────────────────────────
         // Unity lifecycle
         // ──────────────────────────────────────────────────────────
