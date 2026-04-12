@@ -146,3 +146,16 @@ JSON entries are **merged by id** — mods can add new profiles or override Insp
 | `EVENTMANAGER_CAM` | EventManager ← CameraManager (re-broadcast) |
 | `PHYSICSMANAGER_CAM` | PhysicsManager → CameraManager (`Shake()` on significant impacts) |
 | `ODIN_INSPECTOR` | CameraManager ↔→ Odin Inspector (`SerializedMonoBehaviour` + `[ReadOnly]`) |
+
+
+## Editor Tools
+
+Open via **JSON Editors → Camera Manager** in the Unity menu bar, or via the **Open JSON Editor** button in the CameraManager Inspector.
+
+| Action | Result |
+| ------ | ------ |
+| **Load** | Reads `StreamingAssets/cameras.json`; creates the file if missing |
+| **Edit** | Add / remove / reorder entries using the Inspector list |
+| **Save** | Writes back to `StreamingAssets/cameras.json` and calls `AssetDatabase.Refresh()` |
+
+With **ODIN_INSPECTOR** active, the list uses Odin's enhanced drawer (drag-to-sort, collapsible entries).

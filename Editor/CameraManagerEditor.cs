@@ -12,6 +12,9 @@ namespace CameraManager.Editor
         {
             DrawDefaultInspector();
 
+            EditorGUILayout.Space(4);
+            if (GUILayout.Button("Open JSON Editor")) CameraJsonEditorWindow.ShowWindow();
+
             var manager = (CameraManager.Runtime.CameraManager)target;
 
             EditorGUILayout.Space();
