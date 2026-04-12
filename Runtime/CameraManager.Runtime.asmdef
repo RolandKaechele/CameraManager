@@ -3,7 +3,7 @@
   "rootNamespace": "CameraManager.Runtime",
   "references": [],
   "includePlatforms": [],
-  "excludePlatforms": ["Editor"],
+  "excludePlatforms": [],
   "allowUnsafeCode": false,
   "autoReferenced": true
 }
