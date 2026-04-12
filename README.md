@@ -51,7 +51,7 @@ npm install
 1. Create a persistent manager GameObject (or reuse your existing manager object).
 2. Attach `CameraManager`.
 3. Set `initialCameraId` to the default profile (e.g. `"gameplay"`).
-4. Add camera profile definitions in the Inspector or via `cameras.json`.
+4. Add camera profile definitions in the Inspector or via JSON files in `StreamingAssets/cameras/`.
 5. Ensure each camera profile's `cameraTag` matches a tagged GameObject in your scene(s).
 6. Attach any bridge components (see Bridge Components below).
 
@@ -159,6 +159,6 @@ Open via **JSON Editors → Camera Manager** in the Unity menu bar, or via the *
 | ------ | ------ |
 | **Load** | Reads all `*.json` from `StreamingAssets/cameras/`; creates the folder if missing |
 | **Edit** | Add / remove / reorder entries using the Inspector list |
-| **Save** | Writes to `StreamingAssets/cameras/cameras.json` and calls `AssetDatabase.Refresh()` |
+| **Save** | Writes each entry as `<id>.json` to `StreamingAssets/cameras/`; entries without an `id` are skipped. Calls `AssetDatabase.Refresh()` |
 
 With **ODIN_INSPECTOR** active, the list uses Odin's enhanced drawer (drag-to-sort, collapsible entries).

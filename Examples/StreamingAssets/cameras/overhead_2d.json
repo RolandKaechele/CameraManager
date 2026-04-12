@@ -1,0 +1,14 @@
+﻿{
+    "cameras":  [
+                    {
+                        "id":  "overhead_2d",
+                        "displayName":  "Overhead 2D",
+                        "cameraTag":  "MainCamera",
+                        "fov":  60.0,
+                        "orthographic":  true,
+                        "orthographicSize":  6.0,
+                        "priority":  10,
+                        "category":  "gameplay"
+                    }
+                ]
+}

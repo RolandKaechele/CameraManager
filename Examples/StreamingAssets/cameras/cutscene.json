@@ -1,0 +1,14 @@
+﻿{
+    "cameras":  [
+                    {
+                        "id":  "cutscene",
+                        "displayName":  "Cutscene",
+                        "cameraTag":  "MainCamera",
+                        "fov":  45.0,
+                        "orthographic":  false,
+                        "orthographicSize":  5.0,
+                        "priority":  20,
+                        "category":  "cutscene"
+                    }
+                ]
+}

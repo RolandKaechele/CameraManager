@@ -1,0 +1,14 @@
+﻿{
+    "cameras":  [
+                    {
+                        "id":  "gameplay_default",
+                        "displayName":  "Gameplay",
+                        "cameraTag":  "MainCamera",
+                        "fov":  60.0,
+                        "orthographic":  false,
+                        "orthographicSize":  5.0,
+                        "priority":  10,
+                        "category":  "gameplay"
+                    }
+                ]
+}
