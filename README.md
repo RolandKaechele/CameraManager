@@ -9,7 +9,7 @@ Supports JSON-driven profiles for modding and full optional integration with Cut
 
 - **SetCamera / PushCamera / PopCamera** — stack-based camera management for modal camera contexts
 - **Profile application** — configures `fieldOfView`, `orthographic`, and `orthographicSize` on the target `Camera` (located by tag)
-- **JSON / Modding** — define profiles in `StreamingAssets/cameras.json`; merged by `id` on top of Inspector data
+- **JSON / Modding** — define profiles in `StreamingAssets/cameras/`; merged by `id` on top of Inspector data
 - **Events** — `OnCameraChanged(previousId, newId)`, `OnCameraPushed(id)`, `OnCameraPopped(id)` for reactive integration
 - **CutsceneManager integration** — auto-push cutscene camera on sequence start; auto-pop on complete/skip (activated via `CAMERAMANAGER_CSM`)
 - **StateManager integration** — auto-switch camera profile on `AppState` change (activated via `CAMERAMANAGER_STM`)
@@ -64,8 +64,8 @@ npm install
 | ----- | ------- | ----------- |
 | `cameras` | *(empty)* | Built-in camera profiles |
 | `initialCameraId` | `"gameplay"` | Profile activated on Awake |
-| `loadFromJson` | `false` | Merge profiles from `cameras.json` |
-| `jsonPath` | `"cameras.json"` | Path relative to `StreamingAssets/` |
+| `loadFromJson` | `false` | Merge profiles from `cameras/` |
+| `jsonPath` | `"cameras/"` | Folder relative to `StreamingAssets/` containing `.json` files to merge. Falls back to single-file mode if the value points to an existing file. |
 | `maxStackDepth` | `8` | Maximum camera stack depth |
 | `verboseLogging` | `false` | Log all transitions to Console |
 
@@ -114,7 +114,10 @@ EventManager can also re-broadcast CameraManager events using `CameraEventBridge
 
 ## JSON / Modding
 
-Place `cameras.json` in `StreamingAssets/` (path is configurable):
+Place one or more `.json` files in `StreamingAssets/cameras/` (path is configurable).
+All `*.json` files in the folder are loaded and merged by `id` at startup.
+
+**Example:** `StreamingAssets/cameras/main.json`
 
 ```json
 {
@@ -154,8 +157,8 @@ Open via **JSON Editors → Camera Manager** in the Unity menu bar, or via the *
 
 | Action | Result |
 | ------ | ------ |
-| **Load** | Reads `StreamingAssets/cameras.json`; creates the file if missing |
+| **Load** | Reads all `*.json` from `StreamingAssets/cameras/`; creates the folder if missing |
 | **Edit** | Add / remove / reorder entries using the Inspector list |
-| **Save** | Writes back to `StreamingAssets/cameras.json` and calls `AssetDatabase.Refresh()` |
+| **Save** | Writes to `StreamingAssets/cameras/cameras.json` and calls `AssetDatabase.Refresh()` |
 
 With **ODIN_INSPECTOR** active, the list uses Odin's enhanced drawer (drag-to-sort, collapsible entries).

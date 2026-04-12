@@ -38,7 +38,7 @@ namespace CameraManager.Runtime
         [SerializeField] private bool loadFromJson;
 
         [Tooltip("Path relative to StreamingAssets/.")]
-        [SerializeField] private string jsonPath = "cameras.json";
+        [SerializeField] private string jsonPath = "cameras/";
 
         [Header("Stack")]
         [Tooltip("Maximum camera stack depth.")]
@@ -233,27 +233,40 @@ namespace CameraManager.Runtime
 
         private void LoadJson()
         {
-            string full = Path.Combine(Application.streamingAssetsPath, jsonPath);
-            if (!File.Exists(full))
+            string fullPath = Path.Combine(Application.streamingAssetsPath, jsonPath);
+            if (Directory.Exists(fullPath))
             {
-                Debug.LogWarning($"[CameraManager] JSON not found: {full}");
-                return;
+                foreach (var file in Directory.GetFiles(fullPath, "*.json", SearchOption.TopDirectoryOnly))
+                    MergeCamerasFromFile(file);
             }
+            else if (File.Exists(fullPath))
+            {
+                MergeCamerasFromFile(fullPath);
+            }
+            else
+            {
+                Debug.LogWarning($"[CameraManager] JSON not found: {fullPath}");
+            }
+        }
+
+        private void MergeCamerasFromFile(string path)
+        {
             try
             {
-                string json = File.ReadAllText(full);
+                string json = File.ReadAllText(path);
                 var manifest = JsonUtility.FromJson<CameraManifestJson>(json);
+                if (manifest?.cameras == null) return;
                 foreach (var c in manifest.cameras)
                 {
                     if (string.IsNullOrEmpty(c.id)) continue;
                     _map[c.id] = c;
                 }
                 if (verboseLogging)
-                    Debug.Log($"[CameraManager] Loaded {manifest.cameras.Count} profiles from {jsonPath}.");
+                    Debug.Log($"[CameraManager] Merged from {path}.");
             }
             catch (Exception ex)
             {
-                Debug.LogError($"[CameraManager] Failed to parse {jsonPath}: {ex.Message}");
+                Debug.LogError($"[CameraManager] Failed to load JSON: {ex.Message}");
             }
         }
     }
